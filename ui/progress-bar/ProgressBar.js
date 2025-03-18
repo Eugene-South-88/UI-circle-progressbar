@@ -7,7 +7,7 @@ class ProgressBar extends HTMLElement {
     const template = document.createElement('template');
     template.innerHTML = `
       <style>
-        @import url("/ui/progress-bar/ProgressBar.css");
+        @import url("./ProgressBar.css");
       </style>
    <div class="circle">
           <svg class="progress-ring">
