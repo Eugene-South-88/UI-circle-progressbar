@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>OZON</title>
+  <link rel="icon" href="./img/ozon-icon.png" type="image/png">
+  <link rel="stylesheet" href="./styles/style.css">
+  <script type="module" src="./ui/progress-bar/ProgressBar.js" defer></script>
+</head>
+<body>
+  <div class="container">
+
+    <div class="title">
+      Progress
+    </div>
+
+    <div class="progress">
+
+      <progress-bar id="progressBar" value="40" animated="true" ></progress-bar>
+
+
+      <div class="circle-form">
+        <div class="element-form">
+          <input id="valueInput" type="number">
+          <span>Value</span>
+        </div>
+
+        <div class="element-form">
+          <label class="switch">
+            <input id="animateSwitch" type="checkbox" class="switch__input" checked>
+            <span class="slider"></span>
+          </label>
+          <span>Animate</span>
+        </div>
+
+        <div class="element-form">
+          <label class="switch">
+            <input id="hideSwitch" type="checkbox" class="switch__input">
+            <span class="slider"></span>
+          </label>
+          <span>Hide</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const progressBar = document.getElementById('progressBar');
+      const valueInput = document.getElementById('valueInput');
+      const animateSwitch = document.getElementById('animateSwitch');
+      const hideSwitch = document.getElementById('hideSwitch');
+
+
+      valueInput.value = progressBar.value;
+
+      valueInput.addEventListener('input', () => {
+        let value = parseInt(valueInput.value, 10);
+        if (value < 0) value = 0;
+        if (value > 100) value = 100;
+        valueInput.value = value;
+        progressBar.value = value;
+      });
+
+      animateSwitch.addEventListener('change', () => {
+        progressBar.animated = animateSwitch.checked;
+      });
+
+      hideSwitch.addEventListener('change', () => {
+        progressBar.hidden = hideSwitch.checked;
+      });
+    });
+  </script>
+</body>
+</html>
