@@ -7,7 +7,30 @@ class ProgressBar extends HTMLElement {
     const template = document.createElement('template');
     template.innerHTML = `
       <style>
-        @import url("./ProgressBar.css");
+       .progress-ring {
+    margin-top: 55px;
+    width: 120px;
+    height: 120px;
+}
+.progress-ring__circle {
+    transform-origin: center;
+    transform: rotate(-90deg);
+    transition: stroke-dashoffset 0.5s ease-in-out;
+    animation: rotation 2s linear infinite;
+}
+
+.no-animation {
+    animation: none;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
       </style>
    <div class="circle">
           <svg class="progress-ring">
